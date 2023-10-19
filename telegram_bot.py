@@ -52,13 +52,13 @@ async def get_message(message: types.Message):
                 pages = json.loads(f.read())
                 user_text = message.text
                 for page in pages:
-                    info = [info for info in list(page.items())[0][1] if user_text in info['title']]
+                    info = [info for info in [lists for lists in list(page.items())[0][1]] if user_text in info['title']]
                     if info:
-                        text = f'Название фильма: {info["title"]}\n'\
-                               f'Жанр: {info["genre"]}\n'\
-                               f'Год выхода: {info["year"]}\n'\
-                               f'Страна: {info["country"]}\n'\
-                               f'{html.quote(info["link"])}'
+                        text = f'Название фильма: {info[0]["title"]}\n'\
+                               f'Жанр: {info[0]["genre"]}\n'\
+                               f'Год выхода: {info[0]["year"]}\n'\
+                               f'Страна: {info[0]["country"]}\n'\
+                               f'{html.quote(info[0]["link"])}'
                         await message.answer(text)
                         break
                 if not info:

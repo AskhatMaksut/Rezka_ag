@@ -16,7 +16,7 @@
       height: 100vh;
     }
     form {
-      background-color: #1f2a38;
+      background-color: #fff;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -56,7 +56,6 @@
 <script>
    let tg = window.Telegram.WebApp;
    tg.expand();
-   //tg.close();
    const form = document.querySelector('form');
 
    form.addEventListener('submit', function(event) {
@@ -77,6 +76,7 @@
       tg.sendData(jsonData);
 
       form.reset();
+      tg.close();
    });
 
 </script>

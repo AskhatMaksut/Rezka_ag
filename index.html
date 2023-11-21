@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <meta charset="UTF-8">
   <title>Форма регистрации</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
@@ -56,5 +56,27 @@
 <script>
    let tg = window.Telegram.WebApp;
    tg.expand();
+   const form = document.querySelector('form');
+
+   form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = form.querySelector('input[name="username"]').value;
+      const email = form.querySelector('input[name="email"]').value;
+      const password = form.querySelector('input[name="password"]').value;
+
+      const formData = {
+          username: username,
+          email: email,
+          password: password
+      };
+
+
+      const jsonData = JSON.stringify(formData);
+      tg.sendData(jsonData);
+
+      form.reset();
+   });
+
 </script>
 </html>

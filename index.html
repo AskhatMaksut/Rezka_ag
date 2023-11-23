@@ -58,7 +58,6 @@
   <input type="password" name="password" placeholder="Пароль" required>
   <input type="submit" value="Зарегистрироваться">
 </form>
-</body>
 
 <script>
    let tg = window.Telegram.WebApp;
@@ -80,10 +79,9 @@
 
 
       const jsonData = JSON.stringify(formData);
-      //tg.sendData(jsonData);
-      window.location.href = "https://askhatmaksut.github.io/Rezka_ag/currency.html";
-      //form.reset();
+      tg.sendData(jsonData);
    });
 
 </script>
+</body>
 </html>
